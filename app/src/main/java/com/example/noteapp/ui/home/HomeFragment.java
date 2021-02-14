@@ -26,29 +26,29 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
+    }
 
 
-        @Override
-        public void onViewCreated (@NonNull View view, @Nullable Bundle savedInstanceState){
-            super.onViewCreated(view, savedInstanceState);
-            FloatingActionButton fab = view.findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openNote();
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNote();
 
-                }
-            });
-        }
-
-            private void openNote () {
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-                navController.navigate(R.id.noteFragment);
             }
-        }
+        });
+    }
+
+    private void openNote() {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.noteFragment);
+    }
 
 
     public void onClick(Intent intent) {
 
     }
-    }
+}

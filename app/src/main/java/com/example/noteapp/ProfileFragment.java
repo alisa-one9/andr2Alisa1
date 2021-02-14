@@ -11,68 +11,59 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import android.content.Context;
 
+import android.content.Context;
 
 
 public class ProfileFragment extends Fragment {
 
 
-    private static final int RESULT_OK =2 ;
+    private ActivityResultLauncher<String> getImageGallery;
+    private static final int RESULT_OK = 2;
     private ImageView imageView;
-    private  final int Pick_image = 1;
-
-
-
-
-
+    private final int Pick_image = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
-        imageView =view.findById(R.id.imageView);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        imageView = view.findViewById(R.id.imageView);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPickerIntent =new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent,Pick_image);
+                ProfileFragment.this.openGallery();
+            }
+        });
+        getImageGallery=registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+            @Override
+            public void onActivityResult(Uri result) {
+                imageView.setImageURI(result);
             }
         });
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
-    super.onActivityResult(requestCode,resultCode,imageReturnedIntent);
-    switch (requestCode){
-        case Pick_image:
-            if(resultCode==RESULT_OK){
-                try{
-                    final Uri imageUri =imageReturnedIntent.getData();
-                    final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                    imageView.setImageBitmap(selectedImage);
-                                    } catch(FileNotFoundException e){
-                    e.printStackTrace();
-                }
-            }
+
+    public void openGallery(){
+        getImageGallery.launch("image/*");
     }
-
-    }
-
-
 
 }
