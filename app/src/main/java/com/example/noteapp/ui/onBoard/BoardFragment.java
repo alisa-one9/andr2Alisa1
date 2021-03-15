@@ -14,31 +14,28 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.noteapp.R;
-import com.example.noteapp.ui.boardAdapter;
+import com.example.noteapp.prefs.Prefs;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
-
-import ActivityResultContracts.Prefs;
 
 
 public class BoardFragment extends Fragment {
+    private ViewPager2 viewPager;
     private SpringDotsIndicator springDotsIndicator;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_board, container, false);
 
     }
 
+
+
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ViewPager2 viewPager;
         viewPager = view.findViewById(R.id.viewPager);
         Button btnSkip = view.findViewById(R.id.btnSkip);
         boardAdapter adapter = new boardAdapter();
-        SpringDotsIndicator springDotsIndicator = viewPager.findViewById(R.id.spring_dots_indicator);
+        SpringDotsIndicator springDotsIndicator = view.findViewById(R.id.dots);
         viewPager.setAdapter(adapter);
         springDotsIndicator.setViewPager2(viewPager);
         btnSkip.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +66,7 @@ public class BoardFragment extends Fragment {
 
     private void close() {
         Prefs prefs = new Prefs(requireContext());
+        prefs.saveIsShown();
         NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_controller_view_tag);
         navController.navigateUp();
 

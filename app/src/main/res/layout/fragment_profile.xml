@@ -4,14 +4,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".ProfileFragment">
 
-  <de.hdodenhof.circleimageview.CircleImageView
-      android:id="@+id/imageView"
-      android:layout_width="200dp"
-      android:layout_height="200dp"
-      android:src="@drawable/merilinmonro"
-      android:layout_gravity="center"
-      />
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="370dp"
+      android:background="@android:color/holo_blue_light">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageGallery"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/girl"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="185dp"
+        android:layout_marginLeft="146dp" />
+
+    <TextView
+        android:id="@+id/nameProfile"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
+        android:text="Maya Sayon"
+        android:textAllCaps="false"
+        android:textSize="19dp"
+        android:layout_marginLeft="148dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="86dp"
+        android:text="DataBase-consulter/on-line helper"
+        android:layout_marginLeft="108dp" />
+
+  </FrameLayout>
+
+  <LinearLayout
+      style="@style/FrameStyle"
+      android:layout_width="match_parent"
+      android:layout_height="180dp"
+      android:orientation="horizontal"
+      android:padding="20dp"
+      >
+    <TextView
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="clip_horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="0.5"
+        android:padding="5dp"
+        android:text="Are you try to find overfull
+                    information?"
+        android:textAllCaps="false"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:text="I can help you"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:layout_weight="1"
+        android:layout_gravity="clip_horizontal"
+        android:padding="5dp"
+        android:textStyle="bold"           />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="I*ll find anything"
+        android:textAllCaps="false"
+        android:textSize="14dp"
+        android:layout_weight="1"
+        android:layout_gravity="clip_horizontal"
+        android:padding="5dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
+  <LinearLayout
+      style="@style/FrameStyle"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+      android:paddingLeft="30dp"
+              android:text="About Maya: She is very sociable, quickly navigates the sea of ​​information, will carefully discuss all parts of possible cooperation"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        android:textAllCaps="false"
+        style="@style/ButtonLake"
+        android:layout_gravity="center"
+        android:layout_marginTop="36dp"
+        />
+
+  </LinearLayout>
+
 </LinearLayout>

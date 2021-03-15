@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.noteapp.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class DashboardFragment extends Fragment {
 
@@ -32,4 +33,16 @@ public class DashboardFragment extends Fragment {
         });
         return root;
     }
+
+
+    // private void readFromFirestore() {
+    //     FirebaseFirestore.getInstance()
+    //             .collection("notes")
+    //            .get()
+    //            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+    //                @Override
+    //               public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//
+    //               }
+    //           });
 }
